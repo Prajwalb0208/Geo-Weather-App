@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html ng-app="weatherApp">
+<head>
+    <title>Weather Application with Maps</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>  
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-controller="WeatherController">
+    <div class="background-video">
+        <video autoplay muted loop>
+            <source src="clouds_-_1154 (360p).mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+    <div class="content">
+        <h1>Geo-Weather App</h1>
+        <div id="main">
+            <div id="map"></div>
+            <div class="weather-info" ng-show="weatherData">
+                <h2>Weather Information</h2>
+                <p><strong>Location:</strong> {{ weatherData.location.name }}</p>
+                <p><strong>Temperature:</strong> {{ weatherData.current.temp_c }}°C</p>
+                <p><strong>Weather:</strong> {{ weatherData.current.condition.text }}</p>
+                <img class="weather-icon" ng-src="{{ weatherData.current.condition.icon }}" alt="{{ weatherData.current.condition.text }}">
+                <p><strong>Time:</strong> {{ weatherData.time }}</p>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
